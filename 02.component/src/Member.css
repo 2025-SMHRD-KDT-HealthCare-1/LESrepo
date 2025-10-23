@@ -1,0 +1,11 @@
+div.member {
+  display: block;
+  font-size: 30px;
+  color: black;
+  border: 1px solid skyblue;
+  border-radius: 20px;
+  margin: 5px;
+  width: 1000px;
+  height: 60px;
+  text-align: center;
+};
