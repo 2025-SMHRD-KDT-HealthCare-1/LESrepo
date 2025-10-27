@@ -1,33 +1,41 @@
-import React, { useState, useRef } from 'react'
-// useRef : 하나의 컴포넌트에서 태그를 찾을 수 있는 기능
-//          --> 태그 참조 변수 생성 기능
+import React, { useState, useRef } from 'react';
+
 const Ex04 = () => {
-    // 
-    const [inputText, setInputText] = useState(0);
-    const [ranNum, setRanNum] = useState(0);
-    const [result,setResult] = useState("");
-    const comNum = parseInt(Math.random()*50) + 1;
-    const inputRef = useRef();
+  const [inputText, setInputText] = useState(0);
+  const [ranNum,setRanNum] = useState(parseInt(Math.random() * 50) + 1);
+  const [result, setResult] = useState("");
+  const inputRef = useRef();
+  console.log(ranNum)
+  const btnClick = () => {
+    // 1. 입력값 가져오기
+    const text = parseInt(inputRef.current.value);
 
-    const btnClick= ()=>{
-        // 1. input 태그에 적은 값 가져오기
-        // let text = document.querySelector('input').value
-        let text = inputRef.current.value
-        // 2. 가져온 값으로 inputText 값 바꿔주기
-        setInputText(text)
-        if(text != comNum){
-            if(text<comNum)
-        } 
+    // 2. 값 입력
+    setInputText(text);
+
+    // 3. 비교하기
+    if (text !== ranNum) {
+      if (text > ranNum) {
+        setResult(`${text}보다 작습니다!`);
+      } 
+      else {
+        setResult(`${text}보다 큽니다!`);
+      }
+    } 
+    else {
+      setResult("정답입니다!");
     }
-
+  }
   return (
     <div>
-        <h1>1 ~ 50 랜덤수 맞추기</h1>
-        <input ref={inputRef}></input>
-        <button onClick={btnClick}>추측</button>
-        <p>hint:{inputText}보다 {result}! </p>
+      <h1>1 ~ 50 랜덤수 맞추기</h1>
+      <input ref={inputRef}></input>
+      <button onClick={btnClick}>추측</button>
+      <p>
+        hint : {result}
+      </p>
     </div>
   )
 }
 
-export default Ex04
+export default Ex04;
