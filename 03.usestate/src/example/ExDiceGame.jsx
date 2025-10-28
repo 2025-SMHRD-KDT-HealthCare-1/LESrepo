@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ExDiceGame = () => {
     const diceArr = [
@@ -27,14 +27,28 @@ const ExDiceGame = () => {
 
         setComScore(nextCom);
         setUserScore(nextUser);
-
-        if (nextCom >= 10) {
-        setResult('Com 승리');
-        } 
-        else if (nextUser >= 10) {
-        setResult('User 승리');
-        }    
     }
+
+        useEffect(()=>{
+          if(comScore == 10){
+            setResult("Com 승리")
+          }
+        },[comScore])
+        
+        useEffect(()=>{
+          if(userScore == 10){
+            setResult("User 승리")
+          }
+        },[userScore])
+
+        // if (nextCom == 10) {
+        // setResult('Com 승리');
+        // } 
+        // else if (nextUser == 10) {
+        // setResult('User 승리');
+        // }   
+    
+    
 
     
   return (
